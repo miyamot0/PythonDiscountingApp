@@ -1,0 +1,156 @@
+<!--
+
+Copyright 2016 Shawn Gilroy
+
+This file is part of Python Discounting Web App.
+
+Discounting Web App is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 2.
+
+Discounting Web App is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Discounting Web App.  If not, see http:# www.gnu.org/licenses/. 
+
+The Discounting Web App is a tool to assist researchers in behavior economics 
+and behavioral decision-making.
+
+Email: shawn(dot)gilroy(at)temple.edu
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Discounting Model Fit Tools">
+    <meta name="author" content="Shawn Gilroy">
+
+    <title>Discounting Model Fitting tools</title>
+    <link rel="shortcut icon" type="image/png" href="static/favicon.ico" />
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- Handsontable -->
+    <script src="https://cdn.jsdelivr.net/handsontable/0.28.4/handsontable.full.min.js"></script>  
+    <link href="https://cdn.jsdelivr.net/handsontable/0.28.4/handsontable.full.min.css" rel="stylesheet" />    
+
+    <!-- Bootstrap core CSS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>    
+    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Python Flask App</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- UI logic -->
+    <script src="static/logic.js"></script>
+
+    <!-- Styles -->
+    <link href="static/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="container">
+        <p id="csrf">{{csrf_token}}</p>
+
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Home</a></li>
+                    <li role="presentation"><a href="http://www.smallnstats.com">Small n Stats</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Discounting Curve Fitter App</h3>
+        </div>
+
+        <div class="jumbotron">
+            <h1>Temporal Discounting with Python</h1>
+            <p>Popular models of discounting are easily fitted here using SciPy and Numpy</p>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <h4>Data to be analyzed</h4>
+                <p>Use the widget below to input delays and values. </p>
+
+                <div class="hot-container">
+                    <div id="sheet"></div>
+                </div>
+
+                <br/>
+
+                <h4>Settings</h4>
+                <p>Select from the following options (figures optional if desired): </p>
+
+                <div class="checkbox">
+                  <label><input type="checkbox" value="" id="boundRachlin" name="boundRachlin">Bound Rachlin's s parameter?</label>
+                </div>
+
+                <div class="checkbox">
+                  <label><input type="checkbox" value="" id="modelSelection" name="modelSelection">Calculate Model Probabilities?</label>
+                </div>                
+
+                <div class="checkbox">
+                  <label><input type="checkbox" value="" id="showFigure" name="showFigure">Display Log-normal figure?</label>
+                </div>
+
+                <div class="checkbox">
+                  <label><input type="checkbox" value="" id="showFigureLog" name="showFigureLog">Display Log-Delay figure?</label>
+                </div>      
+
+                <div class="checkbox">
+                  <label><input type="checkbox" value="" id="showFigureProbs" name="showFigureProbs">Display model probability figure?</label>
+                </div>                                                
+
+                <br/>
+
+                <a class="btn btn-primary" id="testButton" href="#">Compute Fits</a>
+
+            </div>
+            <!-- /spreadsheet widget div -->
+
+            <div class="col-lg-6">
+                <div id="img_preview"></div>
+
+                <div id="results">
+                    <h4>Results of Analysis</h4>
+                    <p>Use the spreadsheet to input delays and values. Select appropriate options as well as settings and click "Compute Fits" to submit the job to the server.</p>
+                </div>
+            </div>
+            <!-- /figure display div -->
+        </div>
+
+        <br/>
+
+        <div id="scrollBoxOutput">Results of analyses will be displayed here...</div>   
+
+        <br/>
+
+        <footer class="footer">
+            <p style="font-weight:bold;">This tool uses several open-sourced licenses</p>
+            <p>Handonstable, for spreadsheet widget (<a href="https://docs.handsontable.com/0.21.0/tutorial-licensing.html">MIT license</a>)</p>
+            <p>SciPy, for least-squares methods (<a href="http://scipy.org/scipylib/license.html">BSD 3-Clause license</a>)</p>
+            <p>NumPy, for faster array methods (<a href="http://www.numpy.org/license.html">BSD 3-Clause license</a>)</p>
+            <p>Bootstrap, for web framework (<a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">MIT license</a>)</p>            
+
+            <p>Developed by 2016 Shawn Gilroy (<a href="https://www.github.com/miyamot0">GPL v2+</a>).</p>
+        </footer>
+        <!-- /footer -->
+    </div>
+    <!-- /container -->
+</body>
+</html>
